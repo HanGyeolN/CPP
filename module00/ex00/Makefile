@@ -12,12 +12,12 @@ SRC = megaphone.cpp
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 
-OBJS = $(SRCS:%.c=%.o)
+OBJS = $(SRCS:%.cpp=%.o)
 
 $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o : %.c
+%.o : %.cpp
 		$(CC) $(CFLAGS) -o $@ -c $^
 
 all : $(NAME)
