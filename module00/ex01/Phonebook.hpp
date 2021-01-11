@@ -10,24 +10,26 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-# define MAX_SIZE 100
-# define NUMBER_OF_CONTACTS 8
-
 class	Phonebook
 {
+	enum
+	{
+		MAX_CONTACT_SIZE = 8,
+	};
 private:
-	Contact	data[NUMBER_OF_CONTACTS];
-	int		check[NUMBER_OF_CONTACTS];
+	Contact	contacts[MAX_CONTACT_SIZE];
+	int		index;
 
-	int		get_idx();
-	int		get_field(string msg, string &data_str);
-	int		show_contact(int idx);
-	void	print_contact_field(string &target);
+	int		GetIndex() const;
+	int		show_contacts() const;
+	void	print_contact_field(string target) const;
+	void	print_contact_field(int num) const;
+	int		scan_idx() const;
 
 public:
 	int		add_contact();
-	void	search_contact();
-	void	print_header();
+	void	search_contact() const;
+	void	print_header() const;
 
 	Phonebook();
 	~Phonebook();

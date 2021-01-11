@@ -2,89 +2,46 @@
 
 Phonebook::Phonebook()
 {
-	int		i;
-
-	i = 0;
-	while (i < NUMBER_OF_CONTACTS)
-	{
-		check[i] = 0;
-		i++;
-	}
+	index = 0;
 }
 
 Phonebook::~Phonebook()
 {
-	return ;
 }
 
-int		Phonebook::get_idx()
+int		Phonebook::GetIndex() const
 {
-	int		i;
-
-	i = 0;
-	while (i < NUMBER_OF_CONTACTS)
-	{
-		if (check[i] == 0)
-			return (i);
-		i++;
-	}
-	return (-1);
+	return (this->index);
 }
 
-void	Phonebook::print_header()
+void	Phonebook::print_header() const
 {
 	cout << "\x1B[2J\x1B[H";
 	cout << "=================Phonebook===================" << endl;
-}
-
-int		Phonebook::get_field(string msg, string &data_str)
-{
-	cout << msg;
-	getline(cin, data_str);
-	if(!cin)
-	{
-		if(cin.eof())
-		{
-			cout << "EOF\n";
-		}
-		else
-			cout << "other failure\n";
-		exit(0);
-	}
-	return (1);
 }
 
 int		Phonebook::add_contact()
 {
 	int		i;
 
-	i = this->get_idx();
-	if (i == -1)
+	i = GetIndex();
+	if (i == MAX_CONTACT_SIZE)
 	{
 		cout << "phonebook is full." << endl;
 		return (1);
 	}
-	this->data[i].idx = std::to_string(i);
+	if (!contacts[i].scan())
+	{
+		cout << "scan error" << endl;
+		return (0);
+	}
+	(this->index)++;
 	print_header();
-	cout << "input mode" << endl;
-	get_field("first name:", this->data[i].first_name);
-	get_field("last name:", this->data[i].last_name);
-	get_field("nickname:", this->data[i].nickname);
-	get_field("login:", this->data[i].login);
-	get_field("postal_address:", this->data[i].postal_address);
-	get_field("email_address:", this->data[i].email_address);
-	get_field("phone_number:", this->data[i].phone_number);
-	get_field("birthday_date:", this->data[i].birthday_date);
-	get_field("favorite_meal:", this->data[i].favorite_meal);
-	get_field("underwear_color:", this->data[i].underwear_color);
-	get_field("darkest_secret:", this->data[i].darkest_secret);
-	print_header();
-	cout << "input success" << endl;
-	this->check[i] = 1;
+	cout << "Input Success" << endl;
 	return (1);
 }
 
-void	Phonebook::print_contact_field(string &target)
+void	Phonebook::print_contact_field(string target) const
 {
 	if (target.length() > 10)
 	{
@@ -97,34 +54,81 @@ void	Phonebook::print_contact_field(string &target)
 	}
 }
 
-int		Phonebook::show_contact(int idx)
+void	Phonebook::print_contact_field(int num) const
 {
-	cout << "|";
-	print_contact_field(this->data[idx].idx);
-	cout << "|";
-	print_contact_field(this->data[idx].first_name);
-	cout << "|";
-	print_contact_field(this->data[idx].last_name);
-	cout << "|";
-	print_contact_field(this->data[idx].nickname);
-	cout << "|" << endl;
-	return (0);
+	cout.width(10);
+	cout << num;
 }
 
-void	Phonebook::search_contact()
+int		Phonebook::show_contacts() const
 {
 	int		i;
 
 	i = 0;
-	print_header();
+	if (this->index == 0)
+		return (0);
 	cout << "---------------------------------------------\n";
     cout << "|     index|first_name| last_name|  nickname|\n";
     cout << "---------------------------------------------\n";
-	while (i < NUMBER_OF_CONTACTS)
+	while (i < this->index)
 	{
-		if (this->check[i] == 1)
-			show_contact(i);
+		cout << "|";
+		print_contact_field(i);
+		cout << "|";
+		print_contact_field(contacts[i].get(CONTACT_CONST::FIRST_NAME));
+		cout << "|";
+		print_contact_field(contacts[i].get(CONTACT_CONST::LAST_NAME));
+		cout << "|";
+		print_contact_field(contacts[i].get(CONTACT_CONST::NICK_NAME));
+		cout << "|" << endl;
 		i++;
 	}
+	cout << "---------------------------------------------\n";
+	return (1);
+}
+
+int		Phonebook::scan_idx() const
+{
+	int			i;
+	string		str;
+	const char	*c_str;
+
+	cout << "search index: ";
+	getline(cin, str);
+	if (!cin)
+	{
+		cout << "Invalid input" << endl;
+		exit(0);
+	}
+	c_str = str.c_str();
+	i = 0;
+	while (c_str[i])
+	{
+		if (!(c_str[i] >= '0' && c_str[i] <= '9'))
+			return (-1);
+		i++;
+	}
+	i = std::stoi(str);
+	return (i);
+}
+
+void	Phonebook::search_contact() const
+{
+	int		target_idx;
+
+	this->print_header();
+	if (!this->show_contacts())
+	{
+		cout << "Contact is empty." << endl;
+		return ;
+	}
+	target_idx = this->scan_idx();
+	if (target_idx == -1 || target_idx >= this->index)
+	{
+		cout << "Invalid index" << endl;
+		return ;
+	}
+	this->print_header();
+	this->contacts[target_idx].print();
 	cout << "---------------------------------------------\n";
 }

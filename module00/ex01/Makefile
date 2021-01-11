@@ -10,7 +10,7 @@ HEADER_DIR = .
 
 SRC_DIR = .
 
-SRC = Phonebook.cpp		main.cpp
+SRC = Phonebook.cpp	Contact.cpp	main.cpp
 
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 

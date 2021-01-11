@@ -1,25 +1,46 @@
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
+# include <iostream>
 # include <string>
 
 using std::string;
+using std::cin;
+using std::cout;
+using std::endl;
+
+namespace CONTACT_CONST
+{
+	enum
+	{
+		FIRST_NAME,
+		LAST_NAME,
+		NICK_NAME,
+		LOGIN,
+		POSTAL_ADDRESS,
+		EMAIL_ADDRESS,
+		PHONE_NUMBER,
+		BIRTHDAY_DATE,
+		FAVORITE_MEAL,
+		UNDERWEAR_COLOR,
+		DARKEST_SECRET,
+		NB_FIELD,
+	};
+}
 
 class	Contact
 {
+private:
+	string		fields[CONTACT_CONST::NB_FIELD];
+	int			scan_field(string msg, int field_idx);
+	void		print_field(string msg, int field_idx) const;
+
 public:
-	string	idx;
-	string	first_name;
-	string	last_name;
-	string	nickname;
-	string	login;
-	string	postal_address;
-	string	email_address;
-	string	phone_number;
-	string	birthday_date;
-	string	favorite_meal;
-	string	underwear_color;
-	string	darkest_secret;
+	int			scan();
+	string		get(int field_idx) const;
+	void		print() const;
+	Contact();
+	~Contact();
 };
 
 #endif

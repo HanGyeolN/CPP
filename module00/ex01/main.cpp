@@ -1,10 +1,5 @@
 #include "Phonebook.hpp"
 
-void	clear()
-{
-	cout << "\x1B[2J\x1B[H";
-}
-
 int		get_command(string &command)
 {
 	cout << "input command: ";
@@ -37,14 +32,16 @@ int main(void)
 	while (1)
 	{
 		if (!get_command(command))
-			return (error("[error] command input\n", 1));
+			return (1);
 		if (command.compare("ADD") == 0)
 		{
 			if (!pb.add_contact())
-				return (error("[error] add contact\n", 1));
+				return (1);
 		}
 		else if (command.compare("SEARCH") == 0)
+		{
 			pb.search_contact();
+		}
 		else if (command.compare("EXIT") == 0)
 			break;
 		else
