@@ -6,31 +6,31 @@
 /*   By: hna <hna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 07:52:06 by hna               #+#    #+#             */
-/*   Updated: 2021/01/10 07:52:07 by hna              ###   ########.fr       */
+/*   Updated: 2021/01/10 08:11:27 by hna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Pony.hpp"
 
-Pony	*ponyOnTheHeap()
+void	ponyOnTheHeap()
 {
 	Pony	*ret;
 
 	ret = new Pony("heap");
-	return (ret);
+	ret->show();
+	delete(ret);
 }
 
 void	ponyOnTheStack()
 {
-	Pony	pony("stack");
+	Pony	pony;
+
+	pony.show();
 }
 
 int		main(void)
-{
-	Pony	*main_pony;
-
-	main_pony = ponyOnTheHeap();
+{	
+	ponyOnTheHeap();
 	ponyOnTheStack();
-	delete main_pony;
 	return (0);
 }

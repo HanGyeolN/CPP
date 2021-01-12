@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Pony.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hna <hna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/10 07:52:01 by hna               #+#    #+#             */
-/*   Updated: 2021/01/10 08:09:54 by hna              ###   ########.fr       */
+/*   Created: 2021/01/12 04:09:54 by hna               #+#    #+#             */
+/*   Updated: 2021/01/12 14:34:07 by hna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Pony.hpp"
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
-Pony::Pony()
-{
-	cout << " pony created" << endl;
-}
+# include <iostream>
+# include <string>
 
-Pony::Pony(string name)
+class	Zombie
 {
-	this->name = name;
-	cout << name << " pony created" << endl;
-}
+private:
+	std::string	type;
+	std::string	name;
+public:
+	Zombie();
+	Zombie(const std::string &name, const std::string &type);
+	~Zombie();
+	void	announce();
+	void	setType(const std::string &type);
+	void	setName(const std::string &name);
+	std::string	getType();
+	std::string	getName();
+};
 
-Pony::~Pony()
-{
-	cout << name << " pony deleted" << endl;
-}
-
-void	Pony::show()
-{
-	cout << "pony: " << this->name << endl;
-}
+#endif
