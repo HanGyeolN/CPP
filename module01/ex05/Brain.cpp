@@ -6,7 +6,7 @@
 /*   By: hna <hna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 08:06:30 by hna               #+#    #+#             */
-/*   Updated: 2021/01/13 19:18:12 by hna              ###   ########.fr       */
+/*   Updated: 2021/01/15 16:32:22 by hna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@ Brain::Brain()
 {
 	std::cout << "brain constructed." << std::endl;
 }
-
-// Brain::Brain(Brain &brain) : name(brain.name)
-// {
-// 	std::cout << "copied brain consturcted." << std::endl;
-// }
 
 Brain::Brain(const Brain &brain) : name(brain.name)
 {

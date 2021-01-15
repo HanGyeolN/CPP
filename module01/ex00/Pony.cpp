@@ -6,7 +6,7 @@
 /*   By: hna <hna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 07:52:01 by hna               #+#    #+#             */
-/*   Updated: 2021/01/10 08:09:54 by hna              ###   ########.fr       */
+/*   Updated: 2021/01/15 16:37:11 by hna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 Pony::Pony()
 {
-	cout << " pony created" << endl;
+	std::cout << " pony created" << std::endl;
 }
 
-Pony::Pony(string name)
+Pony::Pony(std::string name)
 {
 	this->name = name;
-	cout << name << " pony created" << endl;
+	std::cout << name << " pony created" << std::endl;
 }
 
 Pony::~Pony()
 {
-	cout << name << " pony deleted" << endl;
+	std::cout << name << " pony deleted" << std::endl;
 }
 
 void	Pony::show()
 {
-	cout << "pony: " << this->name << endl;
+	std::cout << "pony: " << this->name << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: hna <hna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/10 07:52:06 by hna               #+#    #+#             */
-/*   Updated: 2021/01/10 08:11:27 by hna              ###   ########.fr       */
+/*   Updated: 2021/01/15 16:35:24 by hna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ponyOnTheHeap()
 
 void	ponyOnTheStack()
 {
-	Pony	pony;
+	Pony	pony("stack");
 
 	pony.show();
 }
