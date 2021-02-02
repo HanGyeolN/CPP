@@ -32,9 +32,9 @@ int		main(void)
 {
 	srand((unsigned int)clock());
 	
-	ClapTrap	ct("CT");
-	ct = check_claptrap(ct);
-	ct.beRepaired(100);
+	// ClapTrap	ct("CT");
+	// ct = check_claptrap(ct);
+	// ct.beRepaired(100);
 	
 	std::cout << "--------------------------" << std::endl;
 
@@ -44,9 +44,9 @@ int		main(void)
 
 	std::cout << "--------------------------" << std::endl;
 
-	ScavTrap	st("ST");
-	st = check_scavtrap(st);
-	st.challengeNewcomer();
+	// ScavTrap	st("ST");
+	// st = check_scavtrap(st);
+	// st.challengeNewcomer();
 	
 	return (0);
 }

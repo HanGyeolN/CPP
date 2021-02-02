@@ -6,7 +6,7 @@
 /*   By: hna <hna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 16:09:56 by hna               #+#    #+#             */
-/*   Updated: 2021/02/01 16:09:57 by hna              ###   ########.fr       */
+/*   Updated: 2021/02/01 20:00:03 by hna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	SuperTrap::init()
 	level_ = 1;
 	ranged_attack_damage_ = 20;
 	armor_damage_reduction_ = 5;
+
 	skills[0] = &FragTrap::torgueFiesta;
 	skills[1] = &FragTrap::oneShotWonder;
 	skills[2] = &FragTrap::laserInferno;
