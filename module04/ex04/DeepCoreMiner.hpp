@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AssaultTerminator.hpp                              :+:      :+:    :+:   */
+/*   DeepCoreMiner.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hna <hna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/10 04:53:24 by hna               #+#    #+#             */
-/*   Updated: 2021/02/10 04:53:25 by hna              ###   ########.fr       */
+/*   Created: 2021/02/10 04:44:13 by hna               #+#    #+#             */
+/*   Updated: 2021/02/10 04:44:14 by hna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ASSAULT_TERMINATOR_HPP
-# define ASSAULT_TERMINATOR_HPP
+#ifndef DEEPCOREMINER_HPP
+# define DEEPCOREMINER_HPP
 
-# include "ISpaceMarine.hpp"
+# include "IMiningLaser.hpp"
+# include <string>
 # include <iostream>
 
-class AssaultTerminator : public ISpaceMarine
+class DeepCoreMiner : public IMiningLaser
 {
 public:
-	AssaultTerminator();
-	virtual ~AssaultTerminator();
-	AssaultTerminator(AssaultTerminator const &copy);
-	AssaultTerminator	&operator=(AssaultTerminator const &ref);
-
-	ISpaceMarine*	clone() const;
-	void			battleCry() const;
-	void			rangedAttack() const;
-	void			meleeAttack() const;
+	DeepCoreMiner();
+	virtual ~DeepCoreMiner();
+	DeepCoreMiner(DeepCoreMiner const &copy);
+	DeepCoreMiner&	operator=(DeepCoreMiner const &ref);
+	virtual void	mine(IAsteroid*);
 };
 
 #endif

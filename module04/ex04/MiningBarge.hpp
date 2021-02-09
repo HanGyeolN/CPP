@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AssaultTerminator.hpp                              :+:      :+:    :+:   */
+/*   MiningBarge.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hna <hna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/10 04:53:24 by hna               #+#    #+#             */
-/*   Updated: 2021/02/10 04:53:25 by hna              ###   ########.fr       */
+/*   Created: 2021/02/10 04:45:26 by hna               #+#    #+#             */
+/*   Updated: 2021/02/10 04:45:26 by hna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ASSAULT_TERMINATOR_HPP
-# define ASSAULT_TERMINATOR_HPP
+#ifndef MINING_BARGE_HPP
+# define MINING_BARGE_HPP
 
-# include "ISpaceMarine.hpp"
+# include "IMiningLaser.hpp"
+# include <string>
 # include <iostream>
 
-class AssaultTerminator : public ISpaceMarine
+namespace MININGBARGE_CONST
 {
-public:
-	AssaultTerminator();
-	virtual ~AssaultTerminator();
-	AssaultTerminator(AssaultTerminator const &copy);
-	AssaultTerminator	&operator=(AssaultTerminator const &ref);
+	const int	MAX_LASER = 4;
+}
 
-	ISpaceMarine*	clone() const;
-	void			battleCry() const;
-	void			rangedAttack() const;
-	void			meleeAttack() const;
+class MiningBarge
+{
+private:
+	IMiningLaser	*lasers_[MININGBARGE_CONST::MAX_LASER];
+public:
+	MiningBarge();
+	~MiningBarge();
+	MiningBarge(MiningBarge const &copy);
+	MiningBarge&	operator=(MiningBarge const &ref);
+
+	void equip(IMiningLaser*);
+	void mine(IAsteroid*) const;
 };
 
 #endif

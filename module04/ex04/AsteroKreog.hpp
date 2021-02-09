@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.hpp                                     :+:      :+:    :+:   */
+/*   AsteroKreog.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hna <hna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/10 04:52:32 by hna               #+#    #+#             */
-/*   Updated: 2021/02/10 04:52:33 by hna              ###   ########.fr       */
+/*   Created: 2021/02/10 04:44:15 by hna               #+#    #+#             */
+/*   Updated: 2021/02/10 04:44:16 by hna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef I_CHARACTER_HPP
-# define I_CHARACTER_HPP
+#ifndef ASTEROKREOG_HPP
+# define ASTEROKREOG_HPP
 
+# include "IAsteroid.hpp"
+# include "DeepCoreMiner.hpp"
+# include "StripMiner.hpp"
 # include <string>
-# include <iostream>
 
-class AMateria;
-
-class ICharacter
+class AsteroKreog : public IAsteroid
 {
+private:
+	std::string	name_;
 public:
-	virtual ~ICharacter() {}
-	virtual std::string const & getName() const = 0;
-	virtual void	equip(AMateria* m) = 0;
-	virtual void	unequip(int idx) = 0;
-	virtual void	use(int idx, ICharacter& target) = 0;
+	AsteroKreog();
+	~AsteroKreog();
+	AsteroKreog(AsteroKreog const &copy);
+	AsteroKreog&	operator=(AsteroKreog const &ref);
+
+	std::string		beMined(DeepCoreMiner *) const;
+	std::string		beMined(StripMiner *) const;
+	std::string		getName() const;
 };
 
 #endif

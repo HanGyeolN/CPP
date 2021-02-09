@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   KoalaSteroid.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hna <hna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/10 04:48:17 by hna               #+#    #+#             */
-/*   Updated: 2021/02/10 04:48:18 by hna              ###   ########.fr       */
+/*   Created: 2021/02/10 04:44:37 by hna               #+#    #+#             */
+/*   Updated: 2021/02/10 04:44:37 by hna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-# define AMATERIA_HPP
+#ifndef KOALASTEROID_HPP
+# define KOALASTEROID_HPP
 
+# include "IAsteroid.hpp"
+# include "DeepCoreMiner.hpp"
+# include "StripMiner.hpp"
 # include <string>
-# include <iostream>
 
-# include "ICharacter.hpp"
-
-class AMateria
+class KoalaSteroid : public IAsteroid
 {
 private:
-	std::string		_type;
-	unsigned int	_xp;
-
+	std::string	name_;
 public:
-	virtual ~AMateria();
-	AMateria(std::string const &type);
-	AMateria(AMateria const &copy);
-	AMateria&	operator=(AMateria const &ref);
-	
-	std::string const & getType() const;
-	unsigned int getXP() const;
-	
-	virtual AMateria* clone() const = 0;
-	virtual void use(ICharacter& target);
-private:
-	AMateria();
+	KoalaSteroid();
+	~KoalaSteroid();
+	KoalaSteroid(KoalaSteroid const &copy);
+	KoalaSteroid&	operator=(KoalaSteroid const &ref);
+
+	std::string		beMined(DeepCoreMiner *) const;
+	std::string		beMined(StripMiner *) const;
+	std::string		getName() const;
 };
 
 #endif

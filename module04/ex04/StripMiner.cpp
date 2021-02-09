@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.hpp                                     :+:      :+:    :+:   */
+/*   StripMiner.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hna <hna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/10 04:52:32 by hna               #+#    #+#             */
-/*   Updated: 2021/02/10 04:52:33 by hna              ###   ########.fr       */
+/*   Created: 2021/02/10 04:45:57 by hna               #+#    #+#             */
+/*   Updated: 2021/02/10 04:45:58 by hna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef I_CHARACTER_HPP
-# define I_CHARACTER_HPP
+#include "StripMiner.hpp"
 
-# include <string>
-# include <iostream>
-
-class AMateria;
-
-class ICharacter
+StripMiner::StripMiner()
 {
-public:
-	virtual ~ICharacter() {}
-	virtual std::string const & getName() const = 0;
-	virtual void	equip(AMateria* m) = 0;
-	virtual void	unequip(int idx) = 0;
-	virtual void	use(int idx, ICharacter& target) = 0;
-};
+}
 
-#endif
+StripMiner::~StripMiner()
+{
+}
+
+StripMiner::StripMiner(StripMiner const &copy)
+{
+	(void)copy;
+}
+
+
+StripMiner&	StripMiner::operator=(StripMiner const &ref)
+{
+	(void)ref;
+	return (*this);
+}
+
+void		StripMiner::mine(IAsteroid* target)
+{
+	std::cout << "* strip mining... got " << target->beMined(this) << "! *" << std::endl;
+}

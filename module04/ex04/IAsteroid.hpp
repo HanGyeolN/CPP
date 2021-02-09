@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.hpp                                     :+:      :+:    :+:   */
+/*   IAsteroid.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hna <hna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/10 04:52:32 by hna               #+#    #+#             */
-/*   Updated: 2021/02/10 04:52:33 by hna              ###   ########.fr       */
+/*   Created: 2021/02/10 04:44:23 by hna               #+#    #+#             */
+/*   Updated: 2021/02/10 04:44:24 by hna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef I_CHARACTER_HPP
-# define I_CHARACTER_HPP
+#ifndef I_ASTEROID_HPP
+# define I_ASTEROID_HPP
 
 # include <string>
-# include <iostream>
 
-class AMateria;
+class DeepCoreMiner;
+class StripMiner;
 
-class ICharacter
+class IAsteroid
 {
 public:
-	virtual ~ICharacter() {}
-	virtual std::string const & getName() const = 0;
-	virtual void	equip(AMateria* m) = 0;
-	virtual void	unequip(int idx) = 0;
-	virtual void	use(int idx, ICharacter& target) = 0;
+	virtual ~IAsteroid() {}
+	virtual std::string beMined(DeepCoreMiner *) const = 0;
+	virtual std::string beMined(StripMiner *) const = 0;
+	virtual std::string getName() const = 0;
 };
 
 #endif

@@ -1,44 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.cpp                                           :+:      :+:    :+:   */
+/*   DeepCoreMiner.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hna <hna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/10 04:51:28 by hna               #+#    #+#             */
-/*   Updated: 2021/02/10 04:51:29 by hna              ###   ########.fr       */
+/*   Created: 2021/02/10 04:44:10 by hna               #+#    #+#             */
+/*   Updated: 2021/02/10 04:44:10 by hna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cure.hpp"
+#include "DeepCoreMiner.hpp"
 
-Cure::Cure() : AMateria("cure")
+DeepCoreMiner::DeepCoreMiner()
 {
 }
 
-Cure::~Cure()
+DeepCoreMiner::~DeepCoreMiner()
 {
 }
 
-Cure::Cure(const Cure& copy) : AMateria(copy)
+DeepCoreMiner::DeepCoreMiner(DeepCoreMiner const &copy)
 {
+	(void)copy;
 }
 
-Cure&	Cure::operator=(const Cure& ref)
+DeepCoreMiner&	DeepCoreMiner::operator=(DeepCoreMiner const &ref)
 {
-	AMateria::operator=(ref);
+	(void)ref;
 	return (*this);
 }
 
-AMateria*	Cure::clone() const
+// subtype polymorphisms
+void			DeepCoreMiner::mine(IAsteroid* target)
 {
-	AMateria*	ret;
-
-	ret = new Cure(*this);
-	return (ret);
-}
-
-void		Cure::use(ICharacter& target)
-{
-	std::cout << "* heals " << target.getName() <<  "'s wounds *" << std::endl;
+	std::cout << "* mining deep... got " << target->beMined(this) << "! *" << std::endl;
 }
