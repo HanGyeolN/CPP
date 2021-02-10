@@ -5,12 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hna <hna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/11 04:43:23 by hna               #+#    #+#             */
-/*   Updated: 2021/02/11 04:43:23 by hna              ###   ########.fr       */
+/*   Created: 2021/02/11 04:41:44 by hna               #+#    #+#             */
+/*   Updated: 2021/02/11 04:41:45 by hna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 const char*		Bureaucrat::GradeTooHighException::what() const throw()
 {
@@ -28,9 +29,9 @@ Bureaucrat::Bureaucrat()
 
 Bureaucrat::Bureaucrat(std::string const &name, int grade) : name_(name)
 {
-	if (grade < 1)
+	if (grade < BUREAUCRAT_CONST::HIGHEST_GRADE)
 		throw (GradeTooHighException());
-	if (grade > 150)
+	if (grade > BUREAUCRAT_CONST::LOWEST_GRADE)
 		throw (GradeTooLowException());
 	grade_ = grade;
 }
@@ -61,16 +62,42 @@ int			Bureaucrat::getGrade() const
 
 void		Bureaucrat::increaseGrade()
 {
-	if (grade_ - 1 < 1)
+	if (grade_ - 1 < BUREAUCRAT_CONST::HIGHEST_GRADE)
 		throw (GradeTooHighException());
 	grade_--;
 }
 
 void		Bureaucrat::decreaseGrade()
 {
-	if (grade_ + 1 > 150)
+	if (grade_ + 1 > BUREAUCRAT_CONST::LOWEST_GRADE)
 		throw (GradeTooLowException());
 	grade_++;
+}
+
+void		Bureaucrat::signForm(Form &form) const
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << name_ << " signs " << form.getName() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << name_ << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
+void		Bureaucrat::executeForm(Form const &form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << name_ << " executes " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 std::ostream&	operator<<(std::ostream &os, Bureaucrat& b)
