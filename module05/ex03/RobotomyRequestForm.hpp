@@ -6,7 +6,7 @@
 /*   By: hna <hna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 04:41:57 by hna               #+#    #+#             */
-/*   Updated: 2021/02/11 05:11:08 by hna              ###   ########.fr       */
+/*   Updated: 2021/02/12 13:31:21 by hna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ public:
 	RobotomyRequestForm(std::string const &target);
 	virtual ~RobotomyRequestForm();
 	RobotomyRequestForm(RobotomyRequestForm const &copy);
+	void	action() const;
 	
 private:
-	void	action() const;
 	RobotomyRequestForm();
 	RobotomyRequestForm&	operator=(RobotomyRequestForm const &ref);
 };
