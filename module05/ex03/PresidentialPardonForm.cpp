@@ -6,7 +6,7 @@
 /*   By: hna <hna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 05:10:51 by hna               #+#    #+#             */
-/*   Updated: 2021/02/12 13:59:32 by hna              ###   ########.fr       */
+/*   Updated: 2021/02/14 04:43:45 by hna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,5 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=(PresidentialPardonForm
 
 void					PresidentialPardonForm::action() const
 {
-	srand(static_cast<unsigned int>(clock()));
-	std::cout << "* Drilling noise ... *\n";
-	if (rand() % 2)
-		std::cout << target_ << " has been robotomized successfully!\n";
-	else
-		std::cout << target_ << " robotomized failure.\n";
+	std::cout << target_ << " has been pardoned by Zafod Beeblebrox.\n";
 }

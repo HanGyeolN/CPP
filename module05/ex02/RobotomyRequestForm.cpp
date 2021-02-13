@@ -6,7 +6,7 @@
 /*   By: hna <hna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 05:11:13 by hna               #+#    #+#             */
-/*   Updated: 2021/02/11 05:11:19 by hna              ###   ########.fr       */
+/*   Updated: 2021/02/14 04:43:40 by hna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,10 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(RobotomyRequestForm const &r
 
 void					RobotomyRequestForm::action() const
 {
-	std::cout << target_ << " has been pardoned by Zafod Beeblebrox.\n";
+	srand(static_cast<unsigned int>(clock()));
+	std::cout << "* Drilling noise ... *\n";
+	if (rand() % 2)
+		std::cout << target_ << " has been robotomized successfully!\n";
+	else
+		std::cout << target_ << " robotomized failure.\n";
 }
