@@ -52,7 +52,7 @@ void	Numeric::convertFromInt(int n)
 
 void	Numeric::convertFromFloat(float f)
 {
-	if (f == std::numeric_limits<float>::quiet_NaN())
+	if (str_ == "nanf")
 	{
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: impossible" << std::endl;
@@ -71,7 +71,7 @@ void	Numeric::convertFromFloat(float f)
 
 void	Numeric::convertFromDouble(double d)
 {
-	if (d == std::numeric_limits<double>::quiet_NaN())
+	if (str_ == "nan")
 	{
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: impossible" << std::endl;
@@ -84,7 +84,6 @@ void	Numeric::convertFromDouble(double d)
 			std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
 		std::cout << "int: " << static_cast<int>(d) << std::endl;
 	}
-	
 	std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
 	std::cout << "double: " << d << std::endl;
 }
@@ -92,6 +91,7 @@ void	Numeric::convertFromDouble(double d)
 Numeric::Numeric(std::string const &str)
 {
 	std::cout << std::fixed << std::setprecision(1);
+	str_ = str;
 	type_ = detectType(str);
 	try
 	{

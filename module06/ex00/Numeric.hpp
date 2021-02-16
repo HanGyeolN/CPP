@@ -9,6 +9,7 @@ class Numeric
 {
 private:
 	int				type_;
+	std::string		str_;
 	char			char_;
 	int				int_;
 	float			float_;
