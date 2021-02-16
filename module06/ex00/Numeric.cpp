@@ -52,7 +52,7 @@ void	Numeric::convertFromInt(int n)
 
 void	Numeric::convertFromFloat(float f)
 {
-	if (isnan(f))
+	if (f == std::numeric_limits<float>::quiet_NaN())
 	{
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: impossible" << std::endl;
@@ -71,7 +71,7 @@ void	Numeric::convertFromFloat(float f)
 
 void	Numeric::convertFromDouble(double d)
 {
-	if (isnan(d))
+	if (d == std::numeric_limits<double>::quiet_NaN())
 	{
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: impossible" << std::endl;
