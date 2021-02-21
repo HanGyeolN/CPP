@@ -6,7 +6,7 @@
 /*   By: hna <hna@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 12:51:30 by hna               #+#    #+#             */
-/*   Updated: 2021/02/04 16:00:48 by hna              ###   ########.fr       */
+/*   Updated: 2021/02/14 22:36:19 by hna              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,16 @@
 int		main(void)
 {
 	Character* me = new Character("me");
+
 	Enemy* b = new RadScorpion();
 	Enemy* a = new SuperMutant();
+
 	AWeapon* pr = new PlasmaRifle();
 	AWeapon* pf = new PowerFist();
 
 	std::cout << *me;
 	me->equip(pf);
+
 	std::cout << *me;
 	me->attack(a);
 	me->attack(a);
