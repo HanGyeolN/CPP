@@ -1,12 +1,13 @@
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
+# include <vector>
+
 class Span
 {
 private:
-	int				*_arr;
-	unsigned int	_capacity;
-	unsigned int	_idx;
+	std::vector<int>		_vec;
+	unsigned int			_capacity;
 
 public:
 	Span(unsigned int capacity);

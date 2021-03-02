@@ -1,53 +1,41 @@
 #ifndef EASYFIND_HPP
 # define EASYFIND_HPP
 
-# include <vector>
-# include <deque>
-# include <list>
 # include <map>
-# include <set>
+# include <algorithm>
+# include <exception>
 
 template <typename T>
-int		easyfind(T &container, int target)
+typename T::iterator		easyfind(T &container, int target)
 {
-	typedef typename T::iterator iterator;
+	typename T::iterator iter;
 
-	iterator		iter;
-	for (iter = container.begin(); iter != container.end(); iter++)
-	{
-		if (*iter == target)
-			return (*iter);
-	}
-	return (0);
+	iter = std::find(container.begin(), container.end(), target);
+	if (iter == container.end())
+		throw ("not found.");
+	return (iter);
 }
 
-template <typename N>
-int		easyfind(std::map<int, N> &container, int target)
+template <typename T>
+typename std::map<T, T>::iterator			easyfind(std::map<T, T> &container, int target)
 {
-	typedef typename std::map<int, N>::iterator iterator;
+	typename std::map<T, T>::iterator iter;
 
-	iterator iter;
-	for (iter = container.begin(); iter != container.end(); iter++)
-	{
-		if (iter->first == target)
-			return (iter->first);
-	}
-	return (0);
+	iter = container.find(target);
+	if (iter == container.end())
+		throw ("not found.");
+	return (iter);
 }
 
-template <typename N>
-int		easyfind(std::multimap<int, N> &container, int target)
+template <typename T>
+typename std::multimap<T, T>::iterator		easyfind(std::multimap<T, T> &container, int target)
 {
-	typedef typename std::multimap<int, N>::iterator iterator;
+	typename std::multimap<T, T>::iterator iter;
 
-	iterator iter;
-	for (iter = container.begin(); iter != container.end(); iter++)
-	{
-		if (iter->first == target)
-			return (iter->first);
-	}
-	return (0);
+	iter = container.find(target);
+	if (iter == container.end())
+		throw ("not found.");
+	return (iter);
 }
-
 
 #endif
